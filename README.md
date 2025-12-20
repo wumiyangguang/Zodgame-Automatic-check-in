@@ -105,7 +105,7 @@ python main.py
 3. 设置任务名称和描述
 4. 选择触发频率（建议每天）
 5. 选择「启动程序」
-6. 浏览选择 `python.exe`，添加参数 `main.py`
+6. 浏览选择 `python.exe`，添加参数 `/path/to/Zodgame-Automatic-check-in/main.py`
 7. 完成创建
 
 #### Linux
@@ -117,7 +117,7 @@ python main.py
 crontab -e
 
 # 添加以下行（每天 9:00 执行）
-0 9 * * * cd /path/to/zodgame-checkin && python main.py
+0 9 * * * cd /path/to/Zodgame-Automatic-check-in && python main.py
 ```
 
 ### 3. 青龙面板
