@@ -108,7 +108,7 @@ python main.py
 6. 浏览选择 `python.exe`，添加参数 `main.py`
 7. 完成创建
 
-#### Linux/macOS
+#### Linux
 
 使用 crontab 创建定时任务：
 
