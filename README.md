@@ -122,61 +122,37 @@ crontab -e
 
 ### 3. 青龙面板
 
-#### 1. 添加脚本
+#### 1.拉取仓库
 
-1. 登录青龙面板
-2. 点击「脚本管理」→「添加脚本」
-3. 填写脚本信息：
-   - **名称**：ZodGame自动签到
-   - **命令**：`ql repo https://github.com/wumiyangguang/Zodgame-Automatic-check-in.git "main.py|util.py|config.py|requirements.txt" "README.md|LICENSE" "cloudscraper|lxml"`
-   - **定时类型**：定时
-   - **定时规则**：`0 9 * * *`（每天9:00执行）
-4. 点击「确定」添加脚本
+方式 1：订阅管理
 
-#### 2. 配置依赖
-
-青龙面板会自动安装依赖，也可以手动安装：
-
-```bash
-# 在青龙面板的「依赖管理」→「Python3」中添加
-type: pip
-name: cloudscraper
-name: lxml
+```text
+名称：ZodGame自动签到
+类型：公开仓库
+链接：https://github.com/wumiyangguang/Zodgame-Automatic-check-in.git
+分支：main
+定时类型：crontab
+定时规则：0 9 * * *
 ```
 
-#### 3. 配置方式
+方式 2：指令拉取
 
-##### 方式一：配置文件路径（推荐）
-
-在青龙面板的「环境变量」中指定配置文件路径：
-
-- **名称**：`ZODGAME_CONFIG_PATH`
-- **值**：`/ql/data/config/zodgame.json`（可自定义路径）
-- **备注**：ZodGame签到配置文件路径
-
-然后在指定路径创建配置文件，内容与本地配置相同。
-
-##### 方式二：脚本目录配置文件（不推荐）
-
-在青龙面板的「文件管理」中找到 `/ql/data/scripts/Zodgame-Automatic-check-in/` 目录
-创建或编辑 `config.json` 文件，内容与本地配置相同：
-
-```json
-{
-  "accounts": [
-    {
-      "name": "账号1",
-      "cookie": "your_cookie_here",
-      "enabled": true
-    }
-  ],
-  "notification": {
-    "enabled": true
-  }
-}
+```sh
+ql repo https://github.com/wumiyangguang/Zodgame-Automatic-check-in.git "main.py|util.py|config.py|requirements.txt"
 ```
+#### 2.环境变量添加
 
-#### 5. 执行测试
+在青龙面板环境变量中添加以下变量
+
+| 名称                          | 值                | 功能                   |
+|-----------------------------|------------------|----------------------|
+| `ZODGAME_CONFIG_PATH`       | `/ql/data/config/zodgame.json` | ZodGame签到配置文件路径（不使用环境变量则默认使用项目目录的 `config.json`） |
+
+#### 3.添加依赖
+
+在青龙面板依赖管理中添加 cloudscraper 及 lxml
+
+#### 4. 执行测试
 
 点击脚本列表中的「运行」按钮测试签到功能，检查日志输出是否正常。
 
