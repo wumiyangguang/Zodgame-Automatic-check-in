@@ -1,4 +1,5 @@
 from math import fabs
+import os
 import re
 import random
 import json
@@ -10,8 +11,11 @@ from typing import Dict, Optional
 
 def load_config(path: str) -> Dict:
     """
-    加载配置文件，若文件不存在则自动创建模板配置
-    :param path: 配置文件路径
+    加载配置文件，优先从环境变量读取
+    1. 优先检查 ZODGAME_CONFIG 环境变量（完整JSON配置）
+    2. 其次检查 ZODGAME_CONFIG_PATH 环境变量（配置文件路径）
+    3. 最后使用提供的默认路径
+    :param path: 默认配置文件路径
     :return: 配置字典
     """
     # 定义配置文件模板（按用户要求的结构）
@@ -33,6 +37,26 @@ def load_config(path: str) -> Dict:
         }
     }
 
+    # 1. 优先检查 ZODGAME_CONFIG 环境变量（完整JSON配置）
+    config_env = os.getenv("ZODGAME_CONFIG")
+    if config_env:
+        try:
+            config = json.loads(config_env)
+            print(f"✅ 从环境变量 ZODGAME_CONFIG 加载配置成功")
+            return config
+        except json.JSONDecodeError:
+            print(f"❌ 环境变量 ZODGAME_CONFIG JSON格式错误")
+            sys.exit(1)
+        except Exception as e:
+            print(f"❌ 解析环境变量 ZODGAME_CONFIG 失败：{str(e)}")
+            sys.exit(1)
+
+    # 2. 检查 ZODGAME_CONFIG_PATH 环境变量（配置文件路径）
+    config_path_env = os.getenv("ZODGAME_CONFIG_PATH")
+    if config_path_env:
+        path = config_path_env
+
+    # 3. 使用配置文件路径
     try:
         # 尝试读取配置文件
         with open(path, "r", encoding="utf-8") as f:
