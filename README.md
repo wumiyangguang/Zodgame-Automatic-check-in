@@ -131,6 +131,7 @@ crontab -e
 类型：公开仓库
 链接：https://github.com/wumiyangguang/Zodgame-Automatic-check-in.git
 分支：main
+白名单：main.py
 定时类型：crontab
 定时规则：0 9 * * *
 ```
