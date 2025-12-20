@@ -45,7 +45,6 @@ def check_in(scraper: cloudscraper.CloudScraper, account: Dict) -> str:
 
         # 获取 formhash
         formhash = get_formhash(scraper, SIGN_IN_PAGE_URL, custom_cookies)
-        print(f"{account['name']}: 成功获取 Formhash: {formhash}")
 
         # 获取随机心情
         mood = get_random_mood()
