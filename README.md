@@ -14,7 +14,7 @@
 ## 环境要求
 
 - Python 3.7 及以上
-- Windows/Linux/macOS
+- Windows/Linux
 
 ## 安装步骤
 
