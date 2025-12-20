@@ -18,7 +18,7 @@ def load_config(path: str) -> Dict:
     :param path: 默认配置文件路径
     :return: 配置字典
     """
-    # 定义配置文件模板（按用户要求的结构）
+    # 定义配置文件模板
     config_template = {
         "accounts": [
             {
