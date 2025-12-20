@@ -184,6 +184,20 @@ A: 可能是论坛结构更新或 Cookie 失效，请检查 Cookie 是否有效�
 ### Q: 如何开启通知功能？
 A: 在配置文件中将 `notification.enabled` 设置为 `true`，通知功能默认使用青龙面板的通知功能，需要在青龙面板中配置通知接收方。非青龙面板需自定义实现 `notify.py` 文件。
 
+### Q：显示未知错误：
+```
+HTTPSConnectionPool(host='zodgame.xyz', port=443): Max retries exceeded with url: /plugin.php?id=dsu_paulsign:sign (Caused by ConnectTimeoutError(<HTTPSConnection(host='zodgame.xyz', port=443) at 0x286fddecec0>, 'Connection to zodgame.xyz timed out. (connect timeout=10)'))
+```
+A：这是因为 zodgame.xyz 服务器响应超时，导致连接失败。配置host文件，添加以下内容：
+```
+104.26.14.223 http://www.zodgame.xyz
+104.26.14.223 zodgame.xyz
+104.26.15.223 http://www.zodgame.xyz
+104.26.15.223 zodgame.xyz
+172.67.72.167 http://www.zodgame.xyz
+172.67.72.167 zodgame.xyz
+```
+
 
 ## 许可证
 
