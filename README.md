@@ -67,6 +67,7 @@ pip install -r requirements.txt
   }
 }
 ```
+首次运行完毕需手动添加 cookie字段，将获取到的 Cookie 粘贴到对应的位置。
 
 #### 配置参数说明：
 
