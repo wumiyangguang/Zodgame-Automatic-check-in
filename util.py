@@ -7,7 +7,7 @@ import sys
 import cloudscraper
 from lxml import etree
 from config import MOODS
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 
 def load_config(path: str) -> Dict:
     """
