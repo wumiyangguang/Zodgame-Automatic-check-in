@@ -188,7 +188,7 @@ A: 在配置文件中将 `notification.enabled` 设置为 `true`，通知功能�
 ```
 HTTPSConnectionPool(host='zodgame.xyz', port=443): Max retries exceeded with url: /plugin.php?id=dsu_paulsign:sign (Caused by ConnectTimeoutError(<HTTPSConnection(host='zodgame.xyz', port=443) at 0x286fddecec0>, 'Connection to zodgame.xyz timed out. (connect timeout=10)'))
 ```
-A：这是因为 zodgame.xyz 服务器响应超时，导致连接失败。配置host文件，添加以下内容：
+A：这是因为连接 zodgame.xyz 服务器响应超时，导致连接失败。配置host文件，添加以下内容：
 ```
 104.26.14.223 http://www.zodgame.xyz
 104.26.14.223 zodgame.xyz
