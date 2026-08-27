@@ -185,8 +185,7 @@ def send_notification(config: Dict, results: List[str]) -> None:
         content = ""
         for result in results:
             content += result + "\n"
-        push_cfg = config.get({})
-        push.send(title, content, push_cfg)
+        push.send(title, content, config)
         print("✅ 通知发送成功")
         
     except Exception as e:
