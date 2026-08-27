@@ -105,7 +105,7 @@ def main():
         print(result)
 
     # 发送通知（如果启用）
-    notification_config = config.get("notification", {})
+    notification_config = config.get("push", {})
     send_notification(notification_config, results)
 
     print("\n======== 签到完成 ========")

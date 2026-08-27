@@ -33,10 +33,8 @@ def load_config(path: str) -> Dict:
                 "enabled": False
             },
         ],
-        "notification": {
-            "enabled": False
-        },
         "push": {
+            "enabled": False,
             "hitokoto": False,
             "onebot_enabled": False,
             "onebot_url": "",
@@ -187,7 +185,7 @@ def send_notification(config: Dict, results: List[str]) -> None:
         content = ""
         for result in results:
             content += result + "\n"
-        push_cfg = config.get("push", {})
+        push_cfg = config.get({})
         push.send(title, content, push_cfg)
         print("✅ 通知发送成功")
         
