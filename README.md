@@ -4,12 +4,12 @@
 
 ## 功能特点
 
-- ✅ **多账号支持**：同时管理多个 ZodGame 论坛账号
-- 🔍 **Cookie 验证**：自动检查 Cookie 有效性
-- 🎲 **随机心情**：每次签到使用随机心情
-- 📝 **自动配置**：首次运行自动生成配置模板
-- 📱 **通知支持**：可选的签到结果通知功能
-- 🛡️ **Cloudflare 绕过**：使用 cloudscraper 自动绕过 Cloudflare 保护
+-  **多账号支持**：同时管理多个 ZodGame 论坛账号
+-  **Cookie 验证**：自动检查 Cookie 有效性
+-  **随机心情**：每次签到使用随机心情
+-  **自动配置**：首次运行自动生成配置模板
+-  **通知支持**：可选的签到结果通知功能
+-  **Cloudflare 绕过**：使用 cloudscraper 自动绕过 Cloudflare 保护
 
 ## 环境要求
 
@@ -188,7 +188,7 @@ A: 在配置文件中将 `notification.enabled` 设置为 `true`，通知功能�
 ```
 HTTPSConnectionPool(host='zodgame.xyz', port=443): Max retries exceeded with url: /plugin.php?id=dsu_paulsign:sign (Caused by ConnectTimeoutError(<HTTPSConnection(host='zodgame.xyz', port=443) at 0x286fddecec0>, 'Connection to zodgame.xyz timed out. (connect timeout=10)'))
 ```
-A：这是因为 zodgame.xyz 服务器响应超时，导致连接失败。配置host文件，添加以下内容：
+A：这是因为连接 zodgame.xyz 服务器响应超时，导致连接失败。配置host文件，添加以下内容：
 ```
 104.26.14.223 http://www.zodgame.xyz
 104.26.14.223 zodgame.xyz
