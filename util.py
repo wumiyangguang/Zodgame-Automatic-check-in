@@ -8,6 +8,7 @@ import cloudscraper
 from lxml import etree
 from config import MOODS
 from typing import Dict, Optional, List
+import push
 
 def load_config(path: str) -> Dict:
     """
@@ -34,6 +35,13 @@ def load_config(path: str) -> Dict:
         ],
         "notification": {
             "enabled": False
+        },
+        "push": {
+            "hitokoto": False,
+            "onebot_enabled": False,
+            "onebot_url": "",
+            "onebot_targets": "",
+            "onebot_token": ""
         }
     }
 
@@ -170,14 +178,6 @@ def send_notification(config: Dict, results: List[str]) -> None:
     if not config.get('enabled', False):
         return
     
-    try:
-        import notify  # 仅在通知开启时尝试导入
-    except ModuleNotFoundError:
-        print("❌ 缺少 notify 模块，无法发送通知（请安装/创建 notify 模块）")
-        return
-    except Exception as e:
-        print(f"❌ 导入 notify 模块失败：{str(e)}")
-        return    
 
     print(f"\n======== 发送通知 ========")
     
@@ -187,8 +187,8 @@ def send_notification(config: Dict, results: List[str]) -> None:
         content = ""
         for result in results:
             content += result + "\n"
-        
-        notify.send(title, content)
+        push_cfg = config.get("push", {})
+        push.send(title, content, push_cfg)
         print("✅ 通知发送成功")
         
     except Exception as e:
